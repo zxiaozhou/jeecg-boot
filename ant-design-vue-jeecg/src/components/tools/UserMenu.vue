@@ -1,11 +1,8 @@
 <template>
   <div class="user-wrapper" :class="theme">
-    <!-- update_begin author:zhaoxin date:20191129 for: 做头部菜单栏导航 -->
-    <!-- update-begin author:sunjianlei date:20191@20 for: 解决全局样式冲突的问题 -->
     <span class="action" @click="showClick">
       <a-icon type="search"></a-icon>
     </span>
-    <!-- update-begin author:sunjianlei date:20200219 for: 菜单搜索改为动态组件，在手机端呈现出弹出框 -->
     <component :is="searchMenuComp" v-show="searchMenuVisible || isMobile()" class="borders" :visible="searchMenuVisible" title="搜索菜单" :footer="null" @cancel="searchMenuVisible=false">
       <a-select
         class="search-input"
@@ -243,34 +240,6 @@
           console.log("刷新失败",e)
         })
       }
-      /*update_end author:liushaoqian date:20200507 for: 刷新缓存*/
     }
   }
 </script>
-
-<style lang="less" scoped>
-  /* update_begin author:zhaoxin date:20191129 for: 让搜索框颜色能随主题颜色变换*/
-  /* update-begin author:sunjianlei date:20191220 for: 解决全局样式冲突问题 */
-  .user-wrapper .search-input {
-    width: 180px;
-    color: inherit;
-
-    /deep/ .ant-select-selection {
-      background-color: inherit;
-      border: 0;
-      border-bottom: 1px solid white;
-      &__placeholder, &__field__placeholder {
-        color: inherit;
-      }
-    }
-  }
-  /* update-end author:sunjianlei date:20191220 for: 解决全局样式冲突问题 */
-  /* update_end author:zhaoxin date:20191129 for: 让搜索框颜色能随主题颜色变换*/
-</style>
-
-<style scoped>
-  .logout_title {
-    color: inherit;
-    text-decoration: none;
-  }
-</style>
